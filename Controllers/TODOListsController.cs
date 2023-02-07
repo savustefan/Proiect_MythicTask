@@ -21,6 +21,7 @@ namespace Proiect_MythicTask.Controllers
         }
 
         // GET: TODOLists
+        [Authorize]
         public async Task<IActionResult> Index()
         {
               return View(await _context.TODOList.ToListAsync());
