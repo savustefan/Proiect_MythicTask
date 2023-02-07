@@ -40,6 +40,7 @@ namespace Proiect_MythicTask.Controllers
 
 
         // GET: TODOLists/Details/5
+        [Authorize(Roles = "Administrator, Utilizator")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.TODOList == null)
@@ -58,7 +59,7 @@ namespace Proiect_MythicTask.Controllers
         }
 
         // GET: TODOLists/Create
-        [Authorize]
+        [Authorize(Roles = "Utilizator")]
         public IActionResult Create()
         {
             return View();
@@ -67,7 +68,7 @@ namespace Proiect_MythicTask.Controllers
         // POST: TODOLists/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        [Authorize(Roles = "Utilizator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NrCrit,Obiectiv,Descriere,Locație,Deadline")] TODOList tODOList)
@@ -82,7 +83,7 @@ namespace Proiect_MythicTask.Controllers
         }
 
         // GET: TODOLists/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Administrator, Utilizator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.TODOList == null)
@@ -101,7 +102,7 @@ namespace Proiect_MythicTask.Controllers
         // POST: TODOLists/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        [Authorize(Roles = "Administrator, Utilizator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NrCrit,Obiectiv,Descriere,Locație,Deadline")] TODOList tODOList)
@@ -135,7 +136,7 @@ namespace Proiect_MythicTask.Controllers
         }
 
         // GET: TODOLists/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.TODOList == null)
@@ -154,7 +155,7 @@ namespace Proiect_MythicTask.Controllers
         }
 
         // POST: TODOLists/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
